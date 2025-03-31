@@ -1,0 +1,404 @@
+                                 Episode 1 => Inception
+                                   ****************** 
+                                   
+                              React is an library not an framework
+                              
+                         Hello World Program in HTML, JavaScript & React
+
+1️⃣ Understanding Emmet in VS Code
+VS Code uses Emmet, an open-source plugin that speeds up writing HTML & CSS with shorthand notation.
+
+Example: Typing html: in an .html file suggests different boilerplates, auto-generating a basic HTML structure.
+____________________________________________________________________________________________________
+
+2️⃣ Creating Hello World Program in HTML
+✅ Steps:
+
+Create an index.html file.
+
+Use Emmet to generate the boilerplate.
+
+Create a <div> (parent container) and add an <h1> inside it with the text "Hello World from HTML".
+
+📌 Code:
+
+<div>
+  <h1>Hello World from HTML</h1>
+</div>
+____________________________________________________________________________________________________
+
+3️⃣ Creating Hello World Program in JavaScript
+✅ Steps:
+
+Write JavaScript inside the <script> tag in index.html.
+
+Use document.createElement to create an <h1> tag and store it in a variable.
+
+Add text using innerHTML.
+
+Insert this element dynamically inside an existing <div> with id="root" using appendChild.
+
+📌 Code:
+
+<div id="root"></div>
+<script>
+  const heading = document.createElement("h1");
+  heading.innerHTML = "Hello World from JavaScript!";
+
+  const root = document.getElementById("root");
+  root.appendChild(heading);
+</script>
+🔹 Now, the <h1> tag is dynamically inserted inside <div id="root">, without hardcoding it inside HTML.
+___________________________________________________________________________________________________
+
+4️⃣ How Does the Browser Execute JavaScript?
+Browsers have built-in JavaScript engines to interpret & execute JavaScript.
+
+But what about React? 🤔
+
+Browsers don’t understand React directly!
+
+We need to import React into our project.
+
+____________________________________________________________________________________________________
+
+5️⃣ Adding React to a Project
+How?
+🔹 Method 1: Using a CDN
+
+CDN (Content Delivery Network) hosts React, and we can import it directly.
+
+React’s core files are available via CDN links, and by adding them, we bring React inside our project.
+
+📌 Homework:
+✅ What is a CDN?
+
+A distributed network of servers that store copies of website content.
+
+Reduces latency (delays) by loading content from the nearest server.
+
+✅ Benefits of CDN:
+✔ Faster loading times
+✔ Improved user experience
+✔ Reduced load on the origin server
+✔ SEO benefits
+
+✅ CDN Examples:
+
+Cloudflare
+
+Amazon CloudFront
+
+Akamai
+
+Google Cloud CDN
+
+____________________________________________________________________________________________________
+
+6️⃣ Adding React via CDN
+✅ Steps:
+
+Copy the React CDN links.
+
+Paste them inside index.html before the closing <body> tag.
+
+📌 CDN Links:
+
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+✅ Now, our project has React enabled! 🎉
+
+____________________________________________________________________________________________________
+
+7️⃣ Why Do We Need Two CDN Files?
+1️⃣ react.development.js – The core React library (contains functions & methods).
+2️⃣ react-dom.development.js – Handles DOM manipulation (acts as a bridge between React & the browser).
+
+📌 Why separate files?
+
+React is not just for browsers → It works on mobile (React Native), 3D (React Three Fiber), and more.
+
+react-dom.development.js is browser-specific, whereas react.development.js is the core.
+
+____________________________________________________________________________________________________
+
+8️⃣ What is crossorigin?
+✅ An attribute used in <script>, <img>, <audio>, <video>, and <link> elements to handle CORS requests.
+🔗 Read more: W3Schools crossorigin
+
+____________________________________________________________________________________________________
+
+9️⃣ Now, Let's Create Hello World Using React! 🚀
+
+👉 Next step: Writing a Hello World program in React!
+
+1️⃣ Let's Put "Hello World" Inside a Div
+✅ We already have a <div id="root"></div> in our HTML file.
+✅ Now, let's write our React code inside the <script> tag.
+
+2️⃣ Writing React Code 🎉
+✅ Steps:
+
+Use React.createElement() to create an <h1> tag.
+
+                  React.createElement() takes 3 arguments:
+
+-> tagName → The HTML tag (e.g., "h1")
+
+-> props/attribute → An object {} (empty for now)
+
+-> content → The text inside the tag ("Hello World from React").
+
+React needs a root element where all React components will live.
+
+3️⃣ Setting Up the Root Element
+✅ React requires a root element to hold all components & render them into the DOM.
+✅ We use ReactDOM.createRoot() to create it.
+✅ Inside createRoot(), we provide the container div (id="root") where React will render everything.
+
+4️⃣ Rendering Our React Component
+✅ To display elements on the screen, we use render().
+✅ We pass the heading inside render() to show it in the browser.
+
+5️⃣ Final Code: Hello World in React 🎯
+==>   <script>
+            {/* create an h1 tag */}
+        const heading = React.createElement('h1', {}, 'Hello World From React');
+         {/* create an root element */}   
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        {/* render the element */}
+        root.render(heading);
+        </script>
+
+6️⃣ What Did We Just Do?
+✅ Created a React element (<h1>Hello World from React</h1>)
+✅ Created a root element inside <div id="root">
+✅ Rendered the React element inside the root
+
+🎉 Boom! We just created our first React app! 🎉
+
+____________________________________________________________________________________________________
+
+Separating React Code into a Separate File 📂
+
+1️⃣ Moving React Code to App.js
+✅ Instead of writing React code inside the <script> tag in index.html, we will create a separate JavaScript file (App.js).
+✅ This keeps our code organized and modular.
+
+____________________________________________________________________________________________________
+
+2️⃣ Updating index.html
+✅ Remove the inline <script> tag.
+✅ Add a <script> tag to import App.js instead.
+
+📌 Updated index.html:
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="App.js"></script> <!-- Import App.js -->
+
+____________________________________________________________________________________________________
+
+3️⃣ Creating App.js
+✅ Move the React code from index.html into App.js.
+
+📌 App.js Code:
+
+// Creating an h1 element using React
+const heading = React.createElement("h1", {}, "Hello World from React");
+
+// Creating a root element
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// Rendering the heading inside root
+root.render(heading);
+
+💗 React Elements are object only.
+
+____________________________________________________________________________________________________
+
+4️⃣ Why Separate the Code?
+✅ Better Code Organization – Keeps HTML and JavaScript separate.
+✅ Scalability – Easy to add more components in the future.
+✅ Performance – The browser can cache JavaScript files for faster loading.
+
+____________________________________________________________________________________________________
+
+5️⃣ Understanding DOM Manipulation in React
+✅ In traditional JavaScript, DOM Manipulation happens when:
+
+Clicking a button shows/hides something.
+
+Dynamically adding/removing elements.
+
+✅ React Philosophy:
+
+React controls the DOM efficiently using Virtual DOM.
+
+Everything (including HTML) is written inside React (App.js).
+
+No direct DOM manipulation → React handles updates for better performance.
+
+____________________________________________________________________________________________________
+
+6️⃣ Understanding React.createElement() Further
+✅ The second argument {} in React.createElement() is an object where we can add attributes.
+✅ Example: Assigning an id to the element.
+
+📌 Example Code in App.js:
+
+const heading = React.createElement("h1", { id: "heading" }, "Hello World from React");
+✅ Now we can style the element using CSS:
+
+#heading {
+  color: blue;
+  font-size: 24px;
+}
+✅ Third Argument = Children:
+
+The third argument in React.createElement() is the content inside the tag.
+
+It can be text or another React element (nested).
+
+📌 Example of Nested Elements:
+
+const parent = React.createElement("div", {}, 
+  React.createElement("h1", {}, "Hello from Nested React Element")
+);
+root.render(parent);
+
+____________________________________________________________________________________________________
+
+Nested Elements and Sibling Elements in React
+
+1️⃣ Creating Nested Elements in React (Core) 🏗️
+✅ In React, we can create nested elements using React.createElement().
+✅ This allows us to structure our UI in a hierarchical format.
+
+📌 Example: Creating a Nested div
+
+const parent = React.createElement(
+	"div",
+	{ id: "container_parent" },
+	React.createElement(
+		"div",
+		{ id: "child_div" },
+		React.createElement("h1", { id: "children" }, "I am inside 2 div")
+	)
+);
+
+👉 This creates the following structure in HTML:
+<div id="container_parent">
+  <div id="child_div">
+    <h1 id="children">I am inside 2 div</h1>
+  </div>
+</div>
+
+✅ This is how we create a nested element in React (Core).
+
+___________________________________________________________________________________________________
+
+2️⃣ Creating Sibling Elements in React 👨‍👩‍👧
+
+✅ To add sibling elements, we pass them inside an array [] in React.createElement().
+
+📌 Example: Adding h1 and h2 as Sibling Elements
+
+const parentWithSiblings = React.createElement(
+	"div",
+	{ id: "parent_container" },
+	React.createElement("div", { id: "child_container" }, [
+		React.createElement("h1", { id: "elder" }, "Hello, I'm the elder"),
+		React.createElement("h2", { id: "younger" }, "Hello, I'm the younger"),
+	])
+);
+
+👉 This creates the following structure in HTML:
+
+<div id="parent_container">
+  <div id="child_container">
+    <h1 id="elder">Hello, I'm the elder</h1>
+    <h2 id="younger">Hello, I'm the younger</h2>
+  </div>
+</div>
+
+✅ To add sibling tags to a div, we have to pass them inside an array.
+
+___________________________________________________________________________________________________
+
+3️⃣ Alternative: Using JSX for Simplicity 😍
+
+Instead of React.createElement(), we can use JSX for better readability.
+
+📌 Same structure using JSX (Cleaner & Easier)
+
+const ParentJSX = (
+  <div id="parent_container">
+    <div id="child_container">
+      <h1 id="elder">Hello, I'm the elder</h1>
+      <h2 id="younger">Hello, I'm the younger</h2>
+    </div>
+  </div>
+);
+
+✅ JSX makes code more readable compared to React.createElement().
+
+
+___________________________________________________________________________________________________
+
+🔥 Fun Facts About React!
+
+📌 1️⃣ Order of Script Matters!
+👉 What happens if we put App.js before the React CDN links?
+
+<script src="App.js"></script>  <!-- Our script file -->
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>  <!-- React CDN -->
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>  <!-- ReactDOM CDN -->
+
+🚨 Error: "ReferenceError: React is not defined" 🚨
+
+💡 Why?
+
+App.js depends on React and ReactDOM, but they are not loaded yet.
+
+The browser executes JavaScript from top to bottom, so when App.js runs first, it doesn't find React.
+
+Fix: Always load React before running your script! ✅
+
+✅ Correct Order:
+
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="App.js"></script>  <!-- Now it works! -->
+
+📌 2️⃣ React Only Renders Inside a Specific <div>
+🛑 React will only work inside a <div> with the ID "root"
+
+❌ Won't Work:
+
+div id="container"></div>
+
+const root = ReactDOM.createRoot(document.getElementById("container")); // ❌ ERROR!
+root.render(<h1>Hello</h1>);
+
+🚨 Error: Cannot read properties of null
+
+✅ Correct Way:
+
+<div id="root"></div>
+
+const root = ReactDOM.createRoot(document.getElementById("root")); // ✅ WORKS!
+root.render(<h1>Hello, React!</h1>);
+
+💡 Why?
+
+React targets the "root" element to manage everything inside it dynamically.
+
+If you use a different ID, React won’t know where to render the content.
+
+🎯 Key Takeaways
+✅ Always load React & ReactDOM before your script file.
+✅ React only renders inside a <div> with id="root".
+✅ Understanding these small things helps in debugging errors quickly! 🚀
