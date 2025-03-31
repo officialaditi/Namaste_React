@@ -1,4 +1,210 @@
-                                           Ignite the app.
+                                            Ignite the App
 
+📌 Preparing Code for Production
 
-                                           
+--> The code written in episode_1 is not production-ready due to excessive comments and console logs.
+
+--> We need to optimize our code before pushing it to production.
+
+--> If we have 100+ files, we must bundle them before deployment.
+
+--> Images in the app should be optimized for better performance.
+
+--> Several processes must be performed locally before pushing the production-ready code:
+
+       ==> Code splitting
+       ==> Caching
+       ==> Bundling
+       ==> Image optimization
+       ==> Removing extra comments and console logs
+       ==> Minifying the code
+
+______________________________________________________________________________________________________________
+
+📌 Required Packages and Libraries
+
+--> Various packages and libraries help improve performance and scalability.
+
+--> These libraries contain JavaScript code written by other developers to make our project faster and more production-ready.
+
+______________________________________________________________________________________________________________
+
+🔰 What is npm?
+
+==> npm does not have a full form; it is not "Node Package Manager."
+
+==> It manages packages but does not officially stand for "Node Package Manager."
+
+==> npm is the standard repository for all packages.
+
+==> Any package required for our project can be installed using npm.
+
+==> When using create-react-app, npm is pre-installed and pre-configured.
+
+    Using npm
+
+    --> npm init - Initializes a new npm project and asks for:
+
+    --> Package name (project name)
+
+    --> Version number
+
+    --> Description
+
+    --> Entry point (default)
+
+    --> Test command (e.g., Jest for testing)
+
+    --> Git repository
+
+    --> Keywords (e.g., React, etc.)
+
+    --> Author name
+
+    --> License (default)
+
+ After completion, a package.json file is created.
+
+______________________________________________________________________________________________________________
+
+🔰 What is package.json?
+
+--> It is a configuration file for npm.
+
+--> Stores package versions and configuration details.
+
+--> Lists dependencies needed for the project.
+
+--> Packages can be installed using npm install <packageName>.
+
+    🔺 Important Package: Bundler
+
+     ==> A bundler combines multiple files (JavaScript, CSS, images) into optimized files.
+
+     ==> Improves website performance by reducing HTTP requests and file sizes.
+
+     ==> Examples of bundlers:
+
+         ✔ Webpack (used in create-react-app)
+
+         ✔ Parcel
+
+         ✔ Vite
+
+         ✔ Rollup
+
+______________________________________________________________________________________________________________
+
+📌 Using Parcel
+
+1) Install Parcel:
+
+ ---> npm i parcel (installs as a normal dependency)
+
+ ---> npm i -D parcel (installs as a dev dependency)
+
+2) Dependency Types:
+
+ ---> Dev dependencies (-D): Required only during development and testing.
+
+ ---> Normal dependencies: Used in the final production build.
+
+3) Checking Parcel Version:
+
+Parcel's version is listed in package.json.
+
+ ---> A caret (^) before the version number means minor updates are automatically applied.
+
+ ---> A tilde (~) allows for automatic major version upgrades.
+
+4) What is package-lock.json?
+
+ ---> Tracks the exact versions of installed dependencies.
+
+5) Understanding Transitive Dependencies:
+
+ ---> When installing a package like Parcel, it may depend on other packages.
+
+ ---> These dependencies may have their own dependencies, forming a chain.
+
+ ---> This is called transitive dependency.
+
+______________________________________________________________________________________________________________
+
+📌 let ignite the app:-
+
+--> we will use parcel to ignite our app.
+
+now we gonna build our app so how we gonna do this we have run the command npx parcel index.html
+why index.html?? we have to provide the source file.
+
+--> npx parcel index.html
+     -> npx "execute using npm"
+     -> index.html its an entry point
+
+--> once we run this npx parcel index.html code we got 3 file extra and the server will be created
+    for us.
+    it give us an server and host our app on port 1234.
+______________________________________________________________________________________________________________
+
+* Hot Module Replacement (HMR):
+It means that parcel will keep a track of all the files which
+you are updating.
+There is File Watcher Algorithm (written in C++). It keeps
+track of all the files which are changing realtime and it
+tells the server to reload.
+These are all done by PARCEL
+
+______________________________________________________________________________________________________________
+
+📌 let bring react now into our app
+
+-> we have already include the react app using cdn link but its not the good way to bring the 
+   react app into the project for build app ❌
+    but why?
+    -> 1) when we copy the link it make an request call to unpkg to bring the react app to us 
+          which does extra work
+       2) if suppose other day the version of react is upgrades so we have to copy that link for
+          this cdn and work with it extra work
+       3) its good to have react inside our package.json its easy to maintain also if react is 
+          inside it
+
+-> install react via npm:- npm i react 
+   now here we have not written the -D because we don't want react to have in dev dependencies but as the 
+    normal dependencies                   
+______________________________________________________________________________________________________________
+
+* Parcel features at a glance:
+Hot Module Replacement (HMR)
+File Watcher Algorithm - C++
+Bundling
+Minify Code
+Cleaning our code
+Dev and production build
+Igniting Our App! ( Namaste-React ) 8
+Super fast build algorithm
+Image Optimization
+Caching while development
+Compression
+Compatible with older browser versions
+Https on dev
+Image Optimization
+Port No
+Consistency Hashing Algorithm
+Zero Config
+Tree Shaking
+______________________________________________________________________________________________________________
+
+* Browserslist:
+Browserslist is a tool that specifies which browsers should
+be supported/compatible in your frontend app.
+It makes our code compatible for a lot of browsers.
+In package.json file do:
+
+______________________________________________________________________________________________________________
+
+* Tree Shaking:
+Tree shaking is a process of removing the unwanted code that
+we do not use while developing the application.
+In computing, tree shaking is a dead code elimination
+technique that is applied when optimizing code.
