@@ -14,3 +14,11 @@
 
     2) made an mock design of the website how we want to have the layout of the homescreen for the website and the link goes here:- 
     https://www.canva.com/design/DAGjYqsUI1I/D9v5HWSW7--rG6Bf3_DC3w/edit                
+
+--> let make the static app just learning about how to give props how to write an component and all.
+
+--> im using here is vite bundler -> the video used parcel im good with the vite as it faster than parcel.
+
+--> here we generate the app using the vite bundler which give us some pre-defined boilerplate code to us
+
+--> in the episode_4, it only show how to build at app without spliting the file as he just wanted to focus on core building so everything is inside the same file app.js.
