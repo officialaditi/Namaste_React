@@ -43,7 +43,61 @@ This approach is widely used in applications where:
 
 --> The UI structure needs to be scalable and customizable.
 
+---> Config is the data coming from the api which keeps on changing according to different factors like user,
+     location, etc.
+
 How Does It Work in React?
 In React, Config-Driven UI works by mapping JSON data to components dynamically. The UI 
 structure is defined in a configuration object, which the React app reads and renders 
 accordingly.
+
+_______________________________________________________________________________________________________________
+ 
+                             Introducing Props.
+
+Short form for properties. To dynamically send data to a component we use props. Passing a prop to a function 
+is like passing an argument to a function.
+
+==> Passing Props to a Component
+Example,
+<RestaurantCard
+ resName="Meghana Foods"
+ cuisine="Biryani, North Indian"
+/>
+
+‘resName’ and ‘cuisine’ a props and this is prop passing to a
+component.
+
+==> Receiving props in the Component
+Props will be wrapped and send in Javascript object
+Example,
+const RestaurantCard = (props) => {
+ return(
+ <div>{props.resName}</div>
+ )
+}
+
+==> Destructuring Props
+Example,
+const RestaurantCard = ({resName, cuisine}) => {
+ return(
+ <div>{resName}</div>
+ )
+}
+
+_______________________________________________________________________________________________________________
+
+                                        Unique Key id while using map
+
+Each item in the list must be uniquely identified
+
+Why?
+--> When we have components at same level and if a new component
+comes on the first without ID, DOM is going to re-render all the
+components again. As DOM can’t identify where to place it.
+
+--> But if we give each of them a unique ID then react knows where
+to put that component according to the ID. It is a good
+optimization and performance thing.
+
+Note* Never use index as keys in map. It is not recommended.
