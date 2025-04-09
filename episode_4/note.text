@@ -100,4 +100,4 @@ components again. As DOM can’t identify where to place it.
 to put that component according to the ID. It is a good
 optimization and performance thing.
 
-Note* Never use index as keys in map. It is not recommended.
+Note =>  Never use index as keys in map. It is not recommended.

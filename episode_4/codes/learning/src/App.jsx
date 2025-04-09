@@ -1,21 +1,50 @@
 import { GiShoppingCart } from "react-icons/gi";
-
+import { IoLocation } from "react-icons/io5";
 const App = () => {
   return (
-    <div>
+    <>
       <Navbar />
-      <div className="body-container">
-        <RestuarantCard resData={resObj} />
-        <RestuarantCard
-          resName="Persian Darbar"
-          rating="4.3"
-          location="Andheri"
-        />
-      </div>
-    </div>
+      <Body>
+        <RestuarantCard />
+      </Body>
+    </>
   );
 };
+
 export default App;
+
+const data = [
+  {
+    img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/a4ffed13eb197c6df43dfe1c756560e5",
+    name: "Persian Darbar",
+    rating: "4.3",
+    location: "Andheri",
+  },
+  {
+    img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e0839ff574213e6f35b3899ebf1fc597",
+    name: "Chinese Wok",
+    rating: "4.1",
+    location: "Antop Hill",
+  },
+  {
+    img: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/22/deff0d02-ca1d-4ef9-9d62-b0cbeabf33d3_426441.JPG",
+    name: "Big Bowl",
+    rating: "3.8",
+    location: "Sion",
+  },
+];
+
+export const Body = () => {
+  return (
+    <>
+      <div className="body-container">
+        {data.map((data, i) => (
+          <RestuarantCard info={data} key={i} />
+        ))}
+      </div>
+    </>
+  );
+};
 
 export const Navbar = () => {
   return (
@@ -41,109 +70,24 @@ export const Navbar = () => {
   );
 };
 
-const resObj = {
-  info: {
-    id: "19095",
-    name: "Behrouz Biryani",
-    cloudinaryImageId: "a4ffed13eb197c6df43dfe1c756560e5",
-    locality: "S.M Road",
-    areaName: "Antop Hill",
-    costForTwo: "₹500 for two",
-    cuisines: [
-      "Biryani",
-      "North Indian",
-      "Kebabs",
-      "Mughlai",
-      "Beverages",
-      "Desserts",
-    ],
-    avgRating: 4.4,
-    parentId: "1803",
-    avgRatingString: "4.4",
-    totalRatingsString: "8.3K+",
-    sla: {
-      deliveryTime: 30,
-      lastMileTravel: 1.8,
-      serviceability: "SERVICEABLE",
-      slaString: "25-30 mins",
-      lastMileTravelString: "1.8 km",
-      iconType: "ICON_TYPE_EMPTY",
-    },
-    availability: {
-      nextCloseTime: "2025-04-03 23:59:00",
-      opened: true,
-    },
-    badges: {
-      imageBadges: [
-        {
-          imageId: "bolt/bolt%206.png",
-          description: "bolt!",
-        },
-      ],
-    },
-    isOpen: true,
-    type: "F",
-    badgesV2: {
-      entityBadges: {
-        imageBased: {
-          badgeObject: [
-            {
-              attributes: {
-                description: "bolt!",
-                imageId: "bolt/bolt%206.png",
-              },
-            },
-          ],
-        },
-        textBased: {},
-        textExtendedBadges: {},
-      },
-    },
-    aggregatedDiscountInfoV3: {
-      header: "ITEMS",
-      subHeader: "AT ₹99",
-    },
-    differentiatedUi: {
-      displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-      differentiatedUiMediaDetails: {
-        lottie: {},
-        video: {},
-      },
-    },
-    reviewsSummary: {},
-    displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
-    restaurantOfferPresentationInfo: {},
-    externalRatings: {
-      aggregatedRating: {
-        rating: "--",
-      },
-    },
-    ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
-  },
+export const RestuarantCard = ({ info }) => {
+  console.log(info);
+  return (
+    <>
+      <div className="res-card">
+        <div className="res-img">
+          <img alt="card-img" src={info.img} />
+        </div>
+        <div>
+          <div>
+            <h1>{info.name}</h1>
+            <h2>⭐{info.rating}</h2>
+            <h3>
+              <IoLocation /> {info.location}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
-
-export const RestuarantCard = (props) => {
-	const { resData } = props;
-	const name = resData?.info?.name || "Restaurant Name";
-	const rating = resData?.info?.avgRating || "N/A";
-	const cuisines = resData?.info?.cuisines?.join(", ") || "Cuisine";
-	const imgId = resData?.info?.cloudinaryImageId;
-  
-	// Corrected Cloudinary image URL
-	const imgUrl = imgId
-	  ? `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${imgId}`
-	  : "https://via.placeholder.com/150"; // Placeholder image if no imgId exists
-  
-	return (
-	  <div className="res-card">
-		<div className="res-img">
-		  <img alt="restaurant-img" src={imgUrl} />
-		</div>
-		<div>
-		  <h1>{name}</h1>
-		  <h2>⭐{rating}</h2>
-		  <h3>{cuisines}</h3>
-		</div>
-	  </div>
-	);
-  };
